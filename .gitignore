@@ -1,0 +1,20 @@
+# AWS credentials and config — never commit
+.env
+.env.*
+*.pem
+aws-credentials*
+*.tfvars
+.aws/
+
+# Local OS files
+.DS_Store
+Thumbs.db
+
+# Editor cruft
+.vscode/
+.idea/
+*.swp
+
+# Files that contain the account ID — sanitise before committing if you want them in the repo
+bucket-policy.json
+route53-aliases.json
