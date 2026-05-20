@@ -39,7 +39,7 @@ See [THREAT_MODEL.md](./THREAT_MODEL.md). IAM Access Analyzer findings on the bu
 
 ```bash
 aws s3 sync ./site/ s3://shinaoguntoye.dev/ --delete
-aws cloudfront create-invalidation --distribution-id <DIST_ID> --paths "/*"
+aws cloudfront create-invalidation --distribution-id E3NBBE6Y8R7MCC --paths "/*"
 ```
 
 ## CI/CD
