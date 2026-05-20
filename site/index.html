@@ -1,1 +1,276 @@
-<h1>Shina Oguntoye</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shina Oguntoye — From Medicine to Cloud</title>
+  <meta name="description" content="Medical doctor turned cloud engineer. AWS infrastructure portfolio with a healthcare focus. Studying for AWS SAA-C03." />
+  <meta name="theme-color" content="#0d1117" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shinaoguntoye.dev" />
+  <meta property="og:title" content="Shina Oguntoye — From Medicine to Cloud" />
+  <meta property="og:description" content="Medical doctor turned cloud engineer. AWS infrastructure portfolio with a healthcare focus." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Sticky top nav -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a href="#home" class="brand">Shina Oguntoye</a>
+      <ul class="nav-links">
+        <li><a href="#cloud">Cloud</a></li>
+        <li><a href="#fullstack">Full-stack</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="home" class="hero" aria-label="Introduction">
+      <p class="kicker" id="dynamic-greeting">Hello.</p>
+      <h1>From <span class="accent">Medicine</span> to <span class="accent">Cloud</span>.</h1>
+      <p class="lede">
+        Doctor by training (MBBS 2019, St George's, London), self-taught engineer since 2024.
+        I build AWS infrastructure for healthcare-flavoured problems &mdash; the kind I used to see firsthand on the ward.
+      </p>
+      <div class="hero-actions">
+        <a href="#cloud" class="btn btn-primary">See cloud projects</a>
+        <a href="https://github.com/shinatxo" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub →</a>
+      </div>
+    </section>
+
+    <!-- Cloud Projects -->
+    <section id="cloud" class="section" aria-label="Cloud Projects">
+      <header class="section-head">
+        <h2>Cloud projects</h2>
+        <p class="section-sub">AWS infrastructure builds. The current focus.</p>
+      </header>
+
+      <div class="project-grid">
+
+        <!-- Portfolio Site on AWS -->
+        <article class="card featured">
+          <div class="card-head">
+            <h3>Portfolio Site on AWS</h3>
+            <span class="status status-live">Live</span>
+          </div>
+          <p>This site. A private S3 bucket fronted by CloudFront with Origin Access Control, TLS via ACM, Route 53 alias records for both apex and <code>www</code>, and least-privilege IAM throughout. Auto-deploys from <code>main</code> via GitHub Actions using OIDC federation &mdash; no long-lived AWS keys anywhere. Ships with a STRIDE threat model and IAM Access Analyzer evidence.</p>
+          <ul class="badges" aria-label="Tech stack">
+            <li>S3</li>
+            <li>CloudFront</li>
+            <li>Route 53</li>
+            <li>ACM</li>
+            <li>OAC</li>
+            <li>IAM</li>
+            <li>AWS WAF</li>
+            <li>GitHub Actions OIDC</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/shinatxo/portfolio-site" target="_blank" rel="noopener noreferrer">GitHub →</a>
+            <a href="https://github.com/shinatxo/portfolio-site/blob/main/THREAT_MODEL.md" target="_blank" rel="noopener noreferrer">Threat model →</a>
+          </div>
+        </article>
+
+        <!-- Placeholder: Tier 1 #1 -->
+        <article class="card placeholder">
+          <div class="card-head">
+            <h3>NHS Ops Intelligence Dashboard</h3>
+            <span class="status status-coming">Coming soon</span>
+          </div>
+          <p>Synthetic NHS operational data generated on schedule via Lambda + EventBridge, written to S3, queried with Athena, visualised in QuickSight. End-to-end serverless analytics for a real healthcare problem.</p>
+          <ul class="badges" aria-label="Planned stack">
+            <li>Lambda</li>
+            <li>EventBridge</li>
+            <li>S3</li>
+            <li>Athena</li>
+            <li>QuickSight</li>
+          </ul>
+        </article>
+
+        <!-- Placeholder: Tier 1 #2 -->
+        <article class="card placeholder">
+          <div class="card-head">
+            <h3>AI Discharge Summary Assistant</h3>
+            <span class="status status-coming">Coming soon</span>
+          </div>
+          <p>Bedrock-powered draft generator for hospital discharge summaries. API Gateway + Lambda with Cognito-protected access, KMS-encrypted audit log in DynamoDB, generated PDFs to S3 with lifecycle to Glacier.</p>
+          <ul class="badges" aria-label="Planned stack">
+            <li>Bedrock</li>
+            <li>Lambda</li>
+            <li>API Gateway</li>
+            <li>Cognito</li>
+            <li>DynamoDB</li>
+            <li>KMS</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Full-stack Projects -->
+    <section id="fullstack" class="section" aria-label="Full-stack Projects">
+      <header class="section-head">
+        <h2>Full-stack projects</h2>
+        <p class="section-sub">Where I started. Built while learning to code from scratch in 2024–2025.</p>
+      </header>
+
+      <div class="project-grid">
+
+        <!-- To-Do List App -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Task Manager API</h3>
+            <span class="status status-live">Live</span>
+          </div>
+          <p>Full-stack task management system. Java 17 + Spring Boot 3 with Spring Security for auth, MongoDB Atlas for persistence, RESTful API tested with Postman. Deployed on Render with environment-based configuration following OWASP Top 10 practices.</p>
+          <ul class="badges" aria-label="Tech stack">
+            <li>Java 17</li>
+            <li>Spring Boot</li>
+            <li>Spring Security</li>
+            <li>MongoDB</li>
+            <li>Docker</li>
+            <li>Render</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://to-do-list-app-1-y3ji.onrender.com" target="_blank" rel="noopener noreferrer">Live API →</a>
+            <a href="https://github.com/shinatxo/to-do-list-app" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </article>
+
+        <!-- Old portfolio website -->
+        <article class="card">
+          <div class="card-head">
+            <h3>My first portfolio</h3>
+            <span class="status status-previous">Previous</span>
+          </div>
+          <p>The site this one replaces &mdash; hand-built in HTML, CSS, and vanilla JavaScript while learning full-stack from scratch. Dark theme, smooth scroll, responsive layout, floating nav. The starting point of the journey to where I am now.</p>
+          <ul class="badges" aria-label="Tech stack">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>GitHub Pages</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://shinatxo.github.io/portfolio-website/" target="_blank" rel="noopener noreferrer">Live →</a>
+            <a href="https://github.com/shinatxo/portfolio-website" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </article>
+
+        <!-- Rock Paper Scissors -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Rock, Paper, Scissors</h3>
+            <span class="status status-live">Live</span>
+          </div>
+          <p>One of my earliest JavaScript projects. Browser-based game with clean UI and simple game logic. Built during my first month learning to code (Codecademy, Dec 2024).</p>
+          <ul class="badges" aria-label="Tech stack">
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://shinatxo.github.io/rock-paper-scissors/" target="_blank" rel="noopener noreferrer">Live →</a>
+            <a href="https://github.com/shinatxo/rock-paper-scissors" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </article>
+
+        <!-- Mixed Messages -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Mixed Messages</h3>
+            <span class="status status-live">Live</span>
+          </div>
+          <p>Random motivational-message generator. Refresh, get a new message. Built to learn JavaScript randomness, arrays, and DOM manipulation early in the Codecademy career path.</p>
+          <ul class="badges" aria-label="Tech stack">
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://shinatxo.github.io/Mixed-Messages/" target="_blank" rel="noopener noreferrer">Live →</a>
+            <a href="https://github.com/shinatxo/mixed-messages" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about" aria-label="About">
+      <header class="section-head">
+        <h2>About</h2>
+      </header>
+      <div class="about-content">
+        <p>
+          I'm a medical doctor (MBBS 2019, <a href="https://www.sgul.ac.uk" target="_blank" rel="noopener noreferrer">St George's, University of London</a>), based in Nottinghamshire, working as a locum while building toward a cloud engineering career.
+        </p>
+        <p>
+          I started teaching myself to code in December 2024 via the Codecademy full-stack career path. JavaScript games led to a portfolio site, which led to a deployed Spring Boot full-stack app. In 2026 I pivoted to cloud &mdash; AWS infrastructure with a deliberate healthcare focus, working toward the AWS Solutions Architect Associate certification.
+        </p>
+        <p>
+          The combination is the point. Clinical context informs the architecture decisions; rigorous engineering raises the bar on the clinical problems. The projects above are stepping stones; the projects under <em>Coming soon</em> are where it actually gets interesting.
+        </p>
+        <div class="skills-grid">
+          <div>
+            <h4>Cloud</h4>
+            <p>AWS (S3, CloudFront, Route 53, IAM, ACM, WAF, Lambda, DynamoDB), GitHub Actions OIDC, Terraform (learning)</p>
+          </div>
+          <div>
+            <h4>Backend</h4>
+            <p>Java, Spring Boot, MongoDB, Node.js, Python, REST API design, Spring Security</p>
+          </div>
+          <div>
+            <h4>Frontend &amp; tools</h4>
+            <p>HTML, CSS, JavaScript, Git, Docker, Postman, Markdown</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact" aria-label="Contact">
+      <header class="section-head">
+        <h2>Get in touch</h2>
+        <p class="section-sub">Open to cloud-engineering opportunities, healthcare-tech collaborations, and good conversations.</p>
+      </header>
+      <ul class="contact-list">
+        <li>
+          <a href="https://www.linkedin.com/in/shinaoguntoye" target="_blank" rel="noopener noreferrer">
+            <strong>LinkedIn</strong>
+            <span>linkedin.com/in/shinaoguntoye</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/shinatxo" target="_blank" rel="noopener noreferrer">
+            <strong>GitHub</strong>
+            <span>github.com/shinatxo</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:shinaoguntoye@hotmail.co.uk">
+            <strong>Email</strong>
+            <span>shinaoguntoye@hotmail.co.uk</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Shina Oguntoye. Built on AWS. Deployed via GitHub Actions OIDC. <a href="https://github.com/shinatxo/portfolio-site" target="_blank" rel="noopener noreferrer">Source</a>.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
