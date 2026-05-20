@@ -18,3 +18,6 @@ Thumbs.db
 # Files that contain the account ID — sanitise before committing if you want them in the repo
 bucket-policy.json
 route53-aliases.json
+
+# Local backup files
+*.bak
