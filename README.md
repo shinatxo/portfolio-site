@@ -29,7 +29,7 @@ Route 53  ──►  CloudFront distribution  ──►  S3 bucket (private)
 - Domain: ~£10/year (`.dev`)
 - Hosted zone: $0.50/month
 - Everything else: within free tier for the first year
-- Steady-state actual: _(filled in after month 1)_
+- Steady-state actual: ~£2.00 (May 2026 partial)
 
 ## Security posture
 
@@ -42,3 +42,12 @@ aws s3 sync ./site/ s3://shinaoguntoye.dev/ --delete
 aws cloudfront create-invalidation --distribution-id <DIST_ID> --paths "/*"
 ```
 
+## CI/CD
+
+Pushes to `main` that touch `site/` trigger an auto-deploy workflow via GitHub Actions:
+
+1. GitHub mints a short-lived OIDC token scoped to `repo:shinatxo/portfolio-site:ref:refs/heads/main`
+2. AWS STS exchanges it for temporary credentials via an IAM role with least-privilege deploy permissions
+3. Workflow runs `aws s3 sync ./site/ s3://shinaoguntoye.dev/ --delete` and invalidates the CloudFront cache
+
+**No long-lived AWS access keys exist anywhere** — not in GitHub Secrets, not in CI config. The trust policy is in [docs/evidence/iam-trust-policy.json](./docs/evidence/iam-trust-policy.json).
