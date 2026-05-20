@@ -18,8 +18,13 @@ Mini STRIDE pass for a static, public-facing site (S3 + CloudFront + Route 53 + 
 ### Repudiation
 Not applicable — no user actions on the site to audit.
 
-### Information disclosure — bucket goes public, or secrets leak in client-side code
-**Mitigated by:** Block Public Access ON at the bucket level. OAC-scoped bucket policy. IAM Access Analyzer scan shows zero public/cross-account findings. Operating rule: no secrets in the site code or repo — it's a static front door.
+### Information disclosure — bucket goes public, secrets leak in client-side code, or deploy credentials leak
+**Mitigated by:**
+- Block Public Access ON at the bucket level.
+- OAC-scoped bucket policy (only this distribution's ARN allowed).
+- IAM Access Analyzer scan shows zero public/cross-account findings.
+- **Site code:** no secrets in the repo or shipped JS — it's a static front door.
+- **Deploy credentials:** short-lived OIDC tokens minted per workflow run, scoped via the IAM role's trust policy to `repo:shinatxo/portfolio-site:ref:refs/heads/main`. No long-lived AWS access keys stored in GitHub Secrets — eliminates the most common AWS credential leak vector (committed `.aws/credentials`, leaked `.env`, exfiltrated workflow secrets).
 
 ### Denial of Service — volumetric attack on the origin
 **Mitigated by:** CloudFront absorbs L3/L4 attacks; AWS Shield Standard is free and on by default for CloudFront. AWS WAF (bundled on the flat-rate plan) provides L7 protection with AWS-managed rule sets in block mode. S3 is shielded behind CloudFront — not directly reachable (verified via `curl -I` returning 403 against the S3 REST endpoint).
