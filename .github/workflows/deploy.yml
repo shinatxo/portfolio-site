@@ -1,0 +1,32 @@
+name: Deploy to S3 + invalidate CloudFront
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/deploy.yml']
+  workflow_dispatch:
+
+permissions:
+  id-token: write    # required to mint the OIDC token
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::061051247394:role/GitHubActionsPortfolioDeploy
+          aws-region: eu-west-2
+
+      - name: Sync site to S3
+        run: aws s3 sync ./site/ s3://shinaoguntoye.dev/ --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E3NBBE6Y8R7MCC \
+            --paths "/*"
