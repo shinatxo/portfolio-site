@@ -58,6 +58,32 @@
 
       <div class="project-grid">
 
+        <!-- AI Discharge Summary Assistant (Tier-1 flagship) -->
+        <article class="card featured">
+          <div class="card-head">
+            <h3>AI Discharge Summary Assistant</h3>
+            <span class="status status-live">Live</span>
+          </div>
+          <p>Bedrock-powered draft generator that turns messy ward-round notes into a clinician discharge summary, a GP letter, and a plain-English patient version. Cognito-protected behind an async <code>202 + poll</code> API (so generation isn't bound by the 30s gateway timeout), with a hash-only, KMS-encrypted DynamoDB audit log streamed to an S3 Object Lock (WORM) ledger for tamper-evidence. Served as a private-S3 SPA through CloudFront on a custom domain, and watched by a nightly synthetic-traffic canary wired to CloudWatch alarms. Inference and data stay UK-only (eu-west-2); all data is synthetic.</p>
+          <ul class="badges" aria-label="Tech stack">
+            <li>Bedrock</li>
+            <li>Lambda</li>
+            <li>Cognito</li>
+            <li>DynamoDB</li>
+            <li>KMS</li>
+            <li>S3 Object Lock</li>
+            <li>CloudFront</li>
+            <li>Route 53</li>
+            <li>ACM</li>
+            <li>CloudWatch</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://discharge.shinaoguntoye.dev" target="_blank" rel="noopener noreferrer">Live →</a>
+            <a href="https://github.com/shinatxo/ai-discharge-summary" target="_blank" rel="noopener noreferrer">GitHub →</a>
+            <a href="https://github.com/shinatxo/ai-discharge-summary/blob/main/docs/MODEL_CARD.md" target="_blank" rel="noopener noreferrer">Model card →</a>
+          </div>
+        </article>
+
         <!-- Portfolio Site on AWS -->
         <article class="card featured">
           <div class="card-head">
@@ -94,23 +120,6 @@
             <li>S3</li>
             <li>Athena</li>
             <li>QuickSight</li>
-          </ul>
-        </article>
-
-        <!-- Placeholder: Tier 1 #2 -->
-        <article class="card placeholder">
-          <div class="card-head">
-            <h3>AI Discharge Summary Assistant</h3>
-            <span class="status status-coming">Coming soon</span>
-          </div>
-          <p>Bedrock-powered draft generator for hospital discharge summaries. API Gateway + Lambda with Cognito-protected access, KMS-encrypted audit log in DynamoDB, generated PDFs to S3 with lifecycle to Glacier.</p>
-          <ul class="badges" aria-label="Planned stack">
-            <li>Bedrock</li>
-            <li>Lambda</li>
-            <li>API Gateway</li>
-            <li>Cognito</li>
-            <li>DynamoDB</li>
-            <li>KMS</li>
           </ul>
         </article>
 
