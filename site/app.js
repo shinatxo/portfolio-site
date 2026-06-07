@@ -57,3 +57,37 @@
 
   sections.forEach(s => io.observe(s));
 })();
+
+// GA4: track project link + contact clicks
+(function trackClicks() {
+  if (typeof gtag !== 'function') return;
+  const clean = (s) => (s || '').replace(/\s*→\s*$/, '').trim();
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+
+    // Project links inside a card
+    const cardLink = link.closest('.card-links');
+    if (cardLink) {
+      const card = link.closest('.card');
+      const project = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Unknown';
+      gtag('event', 'project_link_click', {
+        project_name: project,
+        link_type: clean(link.textContent),
+        link_url: href
+      });
+      return;
+    }
+
+    // Contact / social links
+    let method = null;
+    if (href.startsWith('mailto:')) method = 'email';
+    else if (href.includes('linkedin.com')) method = 'linkedin';
+    else if (href.includes('github.com')) method = 'github';
+    if (method) {
+      gtag('event', 'contact_click', { method: method, link_url: href });
+    }
+  });
+})();
